@@ -1,0 +1,90 @@
+body {
+	margin: 0;
+	border: 0;
+    padding: 20px;
+}
+
+#course-planner {
+    margin: 0;
+    padding: 0;
+    width: 360px;
+    height: 640px;
+}
+
+#course-planner article {
+	background: #ecebe9;
+}
+
+#course-planner section {
+    position: absolute;
+    border-radius: 5px;
+    padding: 10px;
+    width: 320px;
+    margin: 40px 18px;
+    z-index: 200;
+    background-color: rgba(184, 184, 255, 0.9);
+    visibility: hidden;
+}
+
+#course-planner .holder {
+    padding: 0 5px 5px 5px;
+    width: 355px;
+    height: 610px;
+    margin: 0;
+}
+
+#course-planner button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    width: 22px;
+    height: 30px;
+    opacity: .6;
+    background-position: right;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 15px;
+    top: -600px;
+    position: relative;
+}
+
+#course-planner button#info {
+    background-image: url(../img/info.png);
+}
+
+#course-planner button.colors {
+    background-image: url(../img/colors.png);
+}
+
+/*Color Legend*/
+
+#course-planner section .legend-title {
+    text-align: center;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 90%;
+}
+#course-planner section .legend-scale ul {
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+    float: left;
+    list-style: none;
+}
+#course-planner section .legend-scale ul li {
+    font-size: 80%;
+    list-style: none;
+    margin-left: 0;
+    line-height: 18px;
+    margin-bottom: 2px;
+}
+#course-planner section ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+    margin-left: 0;
+    border-radius: 50%;
+    opacity: 0.8;
+}

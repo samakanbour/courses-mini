@@ -1,0 +1,48 @@
+<html lang="en"><head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="shortcut icon" href="img/scs.gif">
+	<title>Mini Course Planner</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen">	
+	<link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css" >
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.1.0/tabletop.min.js"></script>
+	<script type="text/javascript" src="js/lib/raphael.js"></script>
+	<script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/graph.js"></script>
+	</head>
+	<body>
+
+	<button id="first" 	onclick="$('#holder-2').hide();$('#holder-1').show();$('#course-planner section').css('visibility','hidden');">FIRST TAB</button>
+	<button id="second"	onclick="$('#holder-1').hide();$('#holder-2').show();$('#course-planner section').css('visibility','hidden');">SECOND TAB</button>
+
+		<div id="course-planner">
+			
+			<section id="section-1">
+				<div class='legend-title'>Color legend</div>
+				<div class='legend-scale'>
+					<ul class='legend-labels' id="legend-1"></ul>
+				</div>
+			</section>
+
+			<section id="section-2">
+				<div class='legend-title'>Color legend</div>
+				<div class='legend-scale'>
+					<ul class='legend-labels' id="legend-2"></ul>
+				</div>
+			</section>
+
+			<article>
+				<div class="holder" id="holder-1">
+					<button id="info"></button>
+					<button class="colors" id="colors-1"></button>
+				</div>
+				<div class="holder" id="holder-2">
+					<button id="info"></button>
+					<button class="colors" id="colors-2"></button>
+				</div>
+			</article>
+		</div>
+	</body>
+</html>
