@@ -1,3 +1,7 @@
+$(window).load(function () {
+	$('#holder-2').hide();
+});
+
 document.addEventListener('DOMContentLoaded', function () {
 	
 	Tabletop.init({
