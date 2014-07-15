@@ -1,9 +1,3 @@
-body {
-	margin: 0;
-	border: 0;
-    padding: 20px;
-}
-
 #course-planner {
     margin: 0;
     padding: 0;
@@ -15,12 +9,13 @@ body {
 	background: #ecebe9;
 }
 
-#course-planner section {
+#course-planner section .legend {
+    font-family: sans-serif;
     position: absolute;
     border-radius: 5px;
     padding: 10px;
     width: 320px;
-    margin: 40px 18px;
+    margin: 40px 10px;
     z-index: 200;
     background-color: rgba(184, 184, 255, 0.9);
     visibility: hidden;
@@ -48,12 +43,16 @@ body {
     position: relative;
 }
 
-#course-planner button#info {
+#course-planner button.info {
     background-image: url(../img/info.png);
 }
 
 #course-planner button.colors {
     background-image: url(../img/colors.png);
+}
+
+#course-planner button.more {
+    background-image: url(../img/more.png);
 }
 
 /*Color Legend*/
