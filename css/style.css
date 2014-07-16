@@ -3,14 +3,15 @@
     padding: 0;
     width: 360px;
     height: 640px;
+    font-size: 12px;
+    font-family: sans-serif;
 }
 
 #course-planner article {
 	background: #ecebe9;
 }
 
-#course-planner section .legend {
-    font-family: sans-serif;
+#course-planner section .legend, #course-planner section .legend-info {
     position: absolute;
     border-radius: 5px;
     padding: 10px;
@@ -43,16 +44,38 @@
     position: relative;
 }
 
+#course-planner .legend-info p {
+    line-height: 8px;
+    float: left;
+    clear: right;
+    padding-left: 10px;
+}
+
+#course-planner .legend-info span {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: 15px;
+    display: block;
+    clear: left;
+    float: left;
+    background-position: center center;
+}
+
 #course-planner button.info {
     background-image: url(../img/info.png);
 }
 
-#course-planner button.colors {
+#course-planner button.colors, .legend-info span#color-icon {
     background-image: url(../img/colors.png);
 }
 
-#course-planner button.more {
+#course-planner button.more, .legend-info span#more-icon {
     background-image: url(../img/more.png);
+}
+
+#course-planner .legend-info span#click-icon {
+    background-image: url(../img/click.png);
 }
 
 /*Color Legend*/
@@ -61,7 +84,7 @@
     text-align: center;
     margin-bottom: 5px;
     font-weight: bold;
-    font-size: 90%;
+    font-size: 14px;
 }
 #course-planner section .legend-scale ul {
     margin: 0;
@@ -71,7 +94,6 @@
     list-style: none;
 }
 #course-planner section .legend-scale ul li {
-    font-size: 80%;
     list-style: none;
     margin-left: 0;
     line-height: 18px;

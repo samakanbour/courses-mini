@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     Tabletop.init({
-        key: "0AhtG6Yl2-hiRdEQ4MVpvRHZ6TFRzUUFWMXMwZ1pOWkE",
+        key: "0AhtG6Yl2-hiRdFhTS3h1SnFZY09LRm0tSkdGR2ZWZ2c",
         callback: function (data, tabletop) {
             init(data, 1)
         }
     });
 
     Tabletop.init({
-        key: "0AhtG6Yl2-hiRdFhTS3h1SnFZY09LRm0tSkdGR2ZWZ2c",
+        key: "0AhtG6Yl2-hiRdEQ4MVpvRHZ6TFRzUUFWMXMwZ1pOWkE",
         callback: function (data, tabletop) {
             init(data, 2)
         }
@@ -61,10 +61,10 @@ function init(result, id) {
     var section = '<div class="legend" id="legend-' + id + '">\
 				<div class="legend-title">Color legend</div>\
 				<div class="legend-scale"><ul class="legend-labels"></ul></div></div>';
-    var article = '<div class="holder" id="holder-' + id + '">\
+    var article = '<div class="holder"  id="holder-'    + id + '">\
 				<button class="info"></button>\
-				<button class="colors" id="colors-' + id + '"></button>\
-				<button class="more" id="more-' + id + '"></button></div>';
+				<button class="colors"  id="colors-'    + id + '"></button>\
+				<button class="more"    id="more-'      + id + '"></button></div>';
 
     $('#course-planner section').append(section);
     $('#course-planner article').append(article);
@@ -92,11 +92,11 @@ function init(result, id) {
 function addFunctions() {
     $("#course-planner .info").tooltip({
         placement: 'right',
-        title: 'Click and hold a course to highlight dependencies, double-click for more information'
+        title: 'View usage'
     });
     $("#course-planner .colors").tooltip({
         placement: 'right',
-        title: 'Click to view the color legend'
+        title: 'View the color legend'
     });
     $("#course-planner .more").tooltip({
         placement: 'right',
@@ -105,6 +105,7 @@ function addFunctions() {
 
     $("#course-planner .colors").click(function (e) {
         var num = e.target.id.split('-')[1];
+        $("#course-planner .legend-info").css("visibility", "hidden");
         if ($("#course-planner #legend-" + num)[0].style.visibility == "visible") {
             $("#course-planner #legend-" + num).css("visibility", "hidden");
         } else {
@@ -112,11 +113,21 @@ function addFunctions() {
         }
     });
 
+    $("#course-planner .info").click(function () {
+        $("#course-planner .legend").css("visibility", "hidden");
+        if ($("#course-planner .legend-info")[0].style.visibility == "visible") {
+            $("#course-planner .legend-info").css("visibility", "hidden");
+        } else {
+            $("#course-planner .legend-info").css("visibility", "visible");
+        }
+    });
+
     $("#course-planner article").click(function (e) {
-        if (e.target.className == "colors") {
+        if (e.target.className == "colors" || e.target.className == "info") {
             return
         }
         $("#course-planner .legend").css("visibility", "hidden");
+        $("#course-planner .legend-info").css("visibility", "hidden");
     });
 }
 
@@ -162,11 +173,17 @@ function Graph(id, semesters) {
                 y: y
             }, 100);
             for (var i = connections.length; i--;) {
-                if (connections[i].from.id == list[index].id) {
+                if (connections[i].from.id == list[index].id || connections[i].to.id == list[index].id) {
                     var x1 = x,
-                        y1 = y;
-                    var x2 = connections[i].to.attr("cx"),
+                        y1 = y,
+                        x2 = connections[i].to.attr("cx"),
                         y2 = connections[i].to.attr("cy");
+                    if (connections[i].to.id == list[index].id) {
+                        var x1 = connections[i].from.attr("cx"), 
+                            y1 = connections[i].from.attr("cy"),
+                            x2 = x,
+                            y2 = y;
+                    }
                     var p = ["M", x1, y1, "L", x2, y2].join(",");
                     var p1 = Raphael.pathIntersection(getCircletoPath(x1, y1, 20), p)[0];
                     var p2 = Raphael.pathIntersection(getCircletoPath(x2, y2, 20), p)[0];
@@ -185,6 +202,11 @@ function Graph(id, semesters) {
                         stroke: line.line.attrs.stroke,
                         fill: line.line.attrs.stroke
                     }).rotate((90 + arr.angle), p2.x, p2.y);
+                    if (hidden){
+                        if (connections[i].to.area == "placeholder" || connections[i].from.area == "placeholder"){
+                            connections[i].arrow.hide();
+                        }
+                    }
                 }
             }
         }
@@ -240,25 +262,6 @@ function Graph(id, semesters) {
         return shape;
     }
 
-    this.addCourse = function (course) {
-        var dependencies = course.dependencies;
-        for (var i = dependencies.length; i--;) {
-            if (cours.indexOf(dependencies[i]) == -1 && dependencies[i] != "") {
-                return;
-            }
-        }
-        var id = course.id;
-        if (cours.indexOf(id) == -1) {
-            course.x = 710;
-            course.y = 55;
-            var c = new createShape(course);
-            shapes.push(c);
-            labels.push(c.pair);
-            cours.push(c.id);
-            reposition(c, 25, true);
-        }
-    }
-
     function showHidePlaceholders() {
         for (var i = shapes.length; i--;) {
             if (shapes[i].area == "placeholder") {
@@ -268,6 +271,17 @@ function Graph(id, semesters) {
                 } else {
                     shapes[i].hide();
                     shapes[i].pair.hide();
+                }
+            }
+        }
+        for (var i = connections.length; i--;) {
+            if (connections[i].from.area == "placeholder" || connections[i].to.area == "placeholder") {
+                if (hidden) {
+                    connections[i].line.show();
+                    connections[i].arrow.show();
+                } else {
+                    connections[i].line.hide();
+                    connections[i].arrow.hide();
                 }
             }
         }
@@ -406,6 +420,11 @@ function Graph(id, semesters) {
             for (var i = connections.length; i--;) {
                 if (connections[i].from.id == shape.id || connections[i].to.id == shape.id) {
                     r.connection(connections[i]);
+                    if (hidden){
+                        if (connections[i].to.area == "placeholder" || connections[i].from.area == "placeholder"){
+                            connections[i].arrow.hide();
+                        }
+                    }   
                 }
             }
             r.safari();
