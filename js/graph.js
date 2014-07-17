@@ -7,30 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    Tabletop.init({
-        key: "0AhtG6Yl2-hiRdEQ4MVpvRHZ6TFRzUUFWMXMwZ1pOWkE",
-        callback: function (data, tabletop) {
-            init(data, 2)
-        }
-    });
-
 });
 
 $(window).load(function () {
-    $('.holder').hide();
-    $('#holder-1').show();
-    // this is temporary
-    $('#button-1').click(function () {
-        $('.holder').hide();
-        $('#course-planner .legend').css('visibility', 'hidden');
-        $('#holder-1').show();
-    });
-    $('#button-2').click(function () {
-        $('.holder').hide();
-        $('#course-planner .legend').css('visibility', 'hidden');
-        $('#holder-2').show();
-    });
-    // this is temporary
     addFunctions();
 });
 
@@ -57,17 +36,6 @@ function init(result, id) {
         [],
         []
     ];
-
-    var section = '<div class="legend" id="legend-' + id + '">\
-				<div class="legend-title">Color legend</div>\
-				<div class="legend-scale"><ul class="legend-labels"></ul></div></div>';
-    var article = '<div class="holder"  id="holder-'    + id + '">\
-				<button class="info"></button>\
-				<button class="colors"  id="colors-'    + id + '"></button>\
-				<button class="more"    id="more-'      + id + '"></button></div>';
-
-    $('#course-planner section').append(section);
-    $('#course-planner article').append(article);
 
     result.colors.elements.forEach(function (row) {
         colors[row.category] = row.color;
@@ -105,7 +73,7 @@ function addFunctions() {
 
     $("#course-planner .colors").click(function (e) {
         var num = e.target.id.split('-')[1];
-        $("#course-planner .legend-info").css("visibility", "hidden");
+        $("#course-planner .usage").css("visibility", "hidden");
         if ($("#course-planner #legend-" + num)[0].style.visibility == "visible") {
             $("#course-planner #legend-" + num).css("visibility", "hidden");
         } else {
@@ -115,10 +83,10 @@ function addFunctions() {
 
     $("#course-planner .info").click(function () {
         $("#course-planner .legend").css("visibility", "hidden");
-        if ($("#course-planner .legend-info")[0].style.visibility == "visible") {
-            $("#course-planner .legend-info").css("visibility", "hidden");
+        if ($("#course-planner .usage")[0].style.visibility == "visible") {
+            $("#course-planner .usage").css("visibility", "hidden");
         } else {
-            $("#course-planner .legend-info").css("visibility", "visible");
+            $("#course-planner .usage").css("visibility", "visible");
         }
     });
 
@@ -127,7 +95,7 @@ function addFunctions() {
             return
         }
         $("#course-planner .legend").css("visibility", "hidden");
-        $("#course-planner .legend-info").css("visibility", "hidden");
+        $("#course-planner .usage").css("visibility", "hidden");
     });
 }
 

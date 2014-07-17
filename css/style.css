@@ -11,7 +11,8 @@
 	background: #ecebe9;
 }
 
-#course-planner section .legend, #course-planner section .legend-info {
+#course-planner section .legend, 
+#course-planner section .usage {
     position: absolute;
     border-radius: 5px;
     padding: 10px;
@@ -44,14 +45,14 @@
     position: relative;
 }
 
-#course-planner .legend-info p {
-    line-height: 8px;
+#course-planner .usage p {
+    line-height: 0;
     float: left;
     clear: right;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
-#course-planner .legend-info span {
+#course-planner .usage span {
     width: 20px;
     height: 20px;
     background-repeat: no-repeat;
@@ -66,15 +67,17 @@
     background-image: url(../img/info.png);
 }
 
-#course-planner button.colors, .legend-info span#color-icon {
+#course-planner button.colors, 
+#course-planner .usage span#color-icon {
     background-image: url(../img/colors.png);
 }
 
-#course-planner button.more, .legend-info span#more-icon {
+#course-planner button.more, 
+#course-planner .usage span#more-icon {
     background-image: url(../img/more.png);
 }
 
-#course-planner .legend-info span#click-icon {
+#course-planner .usage span#click-icon {
     background-image: url(../img/click.png);
 }
 
