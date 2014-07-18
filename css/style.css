@@ -3,7 +3,7 @@
     padding: 0;
     width: 360px;
     height: 640px;
-    font-size: 12px;
+    font-size: 11px;
     font-family: sans-serif;
 }
 
@@ -81,9 +81,15 @@
     background-image: url(../img/click.png);
 }
 
+#course-planner .usage span#more-icon,
+#course-planner .usage span#color-icon {
+    background-size: 10px 10px;
+    margin-left: 10px;
+} 
+
 /*Color Legend*/
 
-#course-planner section .legend-title {
+#course-planner section .title {
     text-align: center;
     margin-bottom: 5px;
     font-weight: bold;
