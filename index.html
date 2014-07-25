@@ -1,5 +1,58 @@
 <html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="img/scs.gif">
+    <title>Mini Course Planner</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.1.0/tabletop.min.js"></script>
+    <script type="text/javascript" src="js/lib/raphael.js"></script>
+    <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/graph.js"></script>
+</head>
+
 <body>
-<iframe src="iframe.html" height="620" width="370" scrolling="no" frameBorder="0"></iframe>
+
+    <div id="course-planner">
+        <section>
+
+            <!-- USAGE -->
+            <div class="usage">
+                <div class="title">Usage</div>
+                <span id="click-icon"></span>
+                <p>Click and hold a course to highlight dependencies</p>
+                <span id="click-icon"></span>
+                <p>Double-click for more information</p>
+                <span id="color-icon"></span>
+                <p>Click to view the color legend</p>
+                <span id="more-icon"></span>
+                <p>Show/hide placeholders</p>
+            </div>
+            <!-- END OF USAGE -->
+
+            <!-- COLOR LEGEND -->
+            <div class="legend" id="legend-1">
+                <div class="title">Color legend</div>
+                <div class="legend-scale">
+                    <ul class="legend-labels"></ul>
+                </div>
+            </div>
+            <!-- END OF COLOR LEGEND -->
+        </section>
+
+        <!-- GRAPH -->
+        <article>
+            <div class="holder" id="holder-1">
+                <button class="info"></button>
+                <button class="colors" id="colors-1"></button>
+                <button class="more" id="more-1"></button>
+            </div>
+        </article>
+        <!-- END OF GRAPH -->
+    </div>
+
 </body>
+
 </html>
